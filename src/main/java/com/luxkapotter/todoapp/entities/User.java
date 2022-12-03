@@ -1,7 +1,9 @@
 package com.luxkapotter.todoapp.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,8 +21,8 @@ public class User {
 	private String username;
 	private String password;
 	
-	@OneToMany
-	private List<Todo> todos;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Todo> todos = new ArrayList<>();
 	
 	public User() {
 		
