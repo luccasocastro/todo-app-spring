@@ -3,6 +3,10 @@ package com.luxkapotter.todoapp.DTOs;
 public class TodoDTO {
 	
 	private String content;
+	
+	public TodoDTO() {
+		
+	}
 
 	public TodoDTO(String content) {
 		super();

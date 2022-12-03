@@ -36,7 +36,7 @@ public class TodoService {
         todo.setContent(obj.getContent());
         user.getTodos().add(todo);
         userRepository.save(user);
-        return todo;
+        return repository.save(todo);
 	}
 	
 	public Todo toggleTodoCompleted(Long todoId) {

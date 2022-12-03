@@ -43,7 +43,7 @@ public class TodoController {
 		return new ResponseEntity<Todo>(todo, HttpStatus.CREATED);
 	}
 	
-	@PostMapping("/{todoId}")
+	@PostMapping("/toggle/{todoId}")
 	public ResponseEntity<Todo> toggleTodoCompleted(@PathVariable Long todoId) {
 		Todo todo = service.toggleTodoCompleted(todoId);
 		return new ResponseEntity<Todo>(todo, HttpStatus.OK);
