@@ -30,11 +30,26 @@ public class TodoService {
 		return repository.findById(id);
 	}
 	
-	public void insert(Long userId, TodoDTO obj) {
+	public Todo insert(Long userId, TodoDTO obj) {
 		User user = userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException());
         Todo todo = new Todo();
         todo.setContent(obj.getContent());
         user.getTodos().add(todo);
         userRepository.save(user);
+        return todo;
+	}
+	
+	public Todo toggleTodoCompleted(Long todoId) {
+		Todo todo = repository.findById(todoId).orElseThrow(() -> new NoSuchElementException());
+		todo.setCompleted(!todo.getCompleted());
+		repository.save(todo);
+		return todo;
+	}
+	
+	public void delete(Long userId, Long todoId) {
+		User user = userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException());
+        Todo todo = repository.findById(todoId).orElseThrow(() -> new NoSuchElementException());
+        user.getTodos().remove(todo);
+        repository.delete(todo);
 	}
 }
