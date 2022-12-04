@@ -1,7 +1,10 @@
 package com.luxkapotter.todoapp.DTOs;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class TodoDTO {
 	
+	@NotBlank
 	private String content;
 	
 	public TodoDTO() {

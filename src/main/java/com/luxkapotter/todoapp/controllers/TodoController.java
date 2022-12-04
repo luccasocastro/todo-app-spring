@@ -18,6 +18,8 @@ import com.luxkapotter.todoapp.DTOs.TodoDTO;
 import com.luxkapotter.todoapp.entities.Todo;
 import com.luxkapotter.todoapp.services.TodoService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value="/todos")
 public class TodoController {
@@ -38,7 +40,7 @@ public class TodoController {
 	}
 	
 	@PostMapping("/{userId}")
-	public ResponseEntity<Todo> insert(@PathVariable Long userId, @RequestBody TodoDTO obj) {
+	public ResponseEntity<Todo> insert(@PathVariable Long userId, @RequestBody @Valid TodoDTO obj) {
 		Todo todo = service.insert(userId, obj);
 		return new ResponseEntity<Todo>(todo, HttpStatus.CREATED);
 	}

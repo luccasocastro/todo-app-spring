@@ -1,8 +1,12 @@
 package com.luxkapotter.todoapp.DTOs;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class UserDTO {
 	
+	@NotBlank
 	private String username;
+	@NotBlank
 	private String password;
 	
 	public UserDTO() {

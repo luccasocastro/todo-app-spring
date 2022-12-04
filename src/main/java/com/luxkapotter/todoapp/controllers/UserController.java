@@ -18,6 +18,8 @@ import com.luxkapotter.todoapp.DTOs.UserDTO;
 import com.luxkapotter.todoapp.entities.User;
 import com.luxkapotter.todoapp.services.UserService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value="/users")
 public class UserController {
@@ -38,7 +40,7 @@ public class UserController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<User> insert(@RequestBody UserDTO obj){
+	public ResponseEntity<User> insert(@RequestBody @Valid UserDTO obj){
 		User user = service.insert(obj);
 		return new ResponseEntity<User>(user, HttpStatus.CREATED);
 	}
